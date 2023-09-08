@@ -1,0 +1,27 @@
+.mainpage-navigation {
+    background-color: #272727;
+    padding: 24px 0;
+}
+
+.navigation__container {
+    text-decoration: underline;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+}
+
+.navigation__link {
+    color: #FFF;
+    line-height: 1.23;
+    font-weight: 500;
+}
+
+@media screen and (max-width: 500px) {
+    .navigation__link {
+        font-size: 11px;
+    }
+    .navigation__container {
+        gap: 24px;
+    }
+}

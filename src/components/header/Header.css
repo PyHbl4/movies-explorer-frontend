@@ -1,0 +1,155 @@
+.header {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    z-index: 2;
+}
+
+.header__wrapper {
+    padding: 18px 70px;
+    display: grid;
+    align-items: center;
+    grid-template-columns: auto 1fr;
+}
+
+.header__logo {
+    margin: 0 45px 0 0;
+    font-size: 0;
+}
+
+.header__nav-links {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    line-height: 1;
+}
+
+.header__menu {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 16px;
+}
+
+.header__link {
+    color: #FFF;
+    text-decoration: none;
+    font-size: 12px;
+}
+
+.header__link_mobile {
+    display: none;
+}
+
+.account-link {
+    display: flex;
+    justify-content: flex-end;
+    gap: 7px;
+    align-items: center;
+    border-radius: 40px;
+    box-shadow: 0px 3px 14px 0px rgba(0, 0, 0, 0.08);
+    padding: 3px 3px 3px 11px;
+}
+
+.user-icon {
+    padding: 7px;
+    border-radius: 50%;
+    background-color: #0F4157;
+}
+
+.header__auth-links {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 30px;
+}
+
+.login-link {
+    color: #000;
+    font-weight: 500;
+    display: flex;
+    padding: 8px 20px;
+    background-color: #3DDC84;
+    border-radius: 3px;
+}
+
+.menu-button {
+    display: none;
+}
+
+
+
+@media screen and (max-width: 1024px) {
+    .header__wrapper {
+        padding: 18px 30px;
+    }
+}
+
+@media screen and (max-width: 968px) {
+    .header__nav-links {
+        position: fixed;
+        transition: all .4s;
+        right: 0;
+        top: 0;
+        height: 100vh;
+        max-width: 520px;
+        overflow-y: auto;
+        background-color: #202020;
+        padding: 159px 0 90px;
+        flex-direction: column;
+        box-sizing: border-box;
+        transform: translateX(100%);
+        visibility: hidden;
+        opacity: 0;
+    }
+
+    .header__nav-links.show {
+        visibility: visible;
+        transform: translateX(0%);
+        opacity: 1;
+    }
+
+    .header__link_mobile {
+        display: block;
+    }
+
+    .header__menu {
+        flex-direction: column;
+        gap: 28px;
+    }
+
+    .menu-button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: transparent;
+        border: none;
+        outline: none;
+        padding: 0;
+    }
+
+    .menu-button_close {
+        position: absolute;
+        right: 22px;
+        top: 22px;
+        
+    }
+
+    .menu-button_open {
+        justify-self: end;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .header__wrapper {
+        padding: 18px 14px;
+    }
+    .header__auth-links {
+        gap: 14px;
+    }
+    .login-link {
+        padding: 5px 12px;
+    }
+}
