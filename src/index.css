@@ -9,4 +9,18 @@
 @import url('../src/components/techs/Techs.css');
 @import url('../src/components/aboutMe/AboutMe.css');
 @import url('../src/components/portfolio/Portfolio.css');
+@import url('../src/components/movies/Movies.css');
+@import url('../src/components/searchForm/SearchForm.css');
+@import url('../src/components/filterCheckbox/FilterCheckbox.css');
+@import url('../src/components/moviesCardList/MoviesCardList.css');
+@import url('../src/components/moviesCard/MoviesCard.css');
+@import url('../src/components/profile/Profile.css');
+@import url('../src/components/register/Register.css');
+@import url('../src/components/login/Login.css');
+@import url('../src/components/notFound/NotFound.css');
+
+
+
+
+
 @import url('../src/components/footer/Footer.css');

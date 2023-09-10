@@ -1,0 +1,22 @@
+.movies-page {
+    background-color: #202020;
+}
+
+.app-section {
+    max-width: 1280px;
+    padding: 0 70px;
+    margin: 0 auto;
+}
+
+@media screen and (max-width: 1024px) {
+    .app-section {
+        padding: 0 30px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .app-section {
+        padding: 0 14px;
+    }
+
+}

@@ -1,5 +1,6 @@
 .footer {
     background-color: #202020;
+    grid-area: footer;
 }
 
 .footer__title {
