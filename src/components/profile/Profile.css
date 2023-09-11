@@ -40,12 +40,13 @@
 
 .edit-profile {
     background-color: transparent;
-    margin: 204px 0 0;
+    margin: 200px 0 0;
     color: #FFF;
     text-align: center;
     border: none;
     outline: none;
     cursor: pointer;
+    font-size: 13px;
 }
 
 .logout {
@@ -56,12 +57,26 @@
     cursor: pointer;
     border: none;
     outline: none;
+    font-size: 13px;
     margin: 16px 0 70px;
+    text-decoration: none;
 }
 
-@media screen and (max-width: 968px) {
+@media screen and (max-width: 768px) {
     .profile__title {
-        margin: 310px auto 0;
+        margin: 312px auto 0;
+    }
+
+    .profile__info {
+        margin: 83px auto 0;
+    }
+
+    .profile__info-title {
+        font-size: 11px;
+    }
+
+    .profile__info-value {
+        font-size: 11px;
     }
 }
 
@@ -71,6 +86,10 @@
     }
 
     .profile__info {
-        margin: 80px auto 0;
+        margin: 70px auto 0;
+    }
+
+    .edit-profile {
+        margin: 365px 0 0;
     }
 }

@@ -27,8 +27,8 @@ function Header(props) {
                     </>
                     :
                     <nav className="header__auth-links">
-                        <NavLink to="/sign-up" className={({ isActive }) => `header__link${isActive ? " header__link_active" : ""}`}>Регистрация</NavLink>
-                        <NavLink to="/sign-in" className={({ isActive }) => `header__link login-link${isActive ? " header__link_active" : ""}`}>Войти</NavLink>
+                        <NavLink to="/signup" className={({ isActive }) => `header__link${isActive ? " header__link_active" : ""}`}>Регистрация</NavLink>
+                        <NavLink to="/signin" className={({ isActive }) => `header__link login-link${isActive ? " header__link_active" : ""}`}>Войти</NavLink>
                     </nav>
                 }
             </div>

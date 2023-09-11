@@ -55,7 +55,7 @@
     grid-area: img;
 }
 
-@media screen and (max-width: 968px) {
+@media screen and (max-width: 768px) {
     .student__name {
         font-size: 40px;
         line-height: 1;

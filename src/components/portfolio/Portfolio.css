@@ -51,7 +51,7 @@
     letter-spacing: -1.2px;
 }
 
-@media screen and (max-width: 968px) {
+@media screen and (max-width: 768px) {
 
     .portfolio-project-name {
         font-size: 28px;

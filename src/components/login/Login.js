@@ -15,7 +15,7 @@ function Login(props) {
                 <span className='form__error-field' id='error-password'>Что-то пошло не так...</span>
                 <button type="submit" className='form__submit'>Войти</button>
             </form>
-            <p className='auth__disclaimer'>Ещё не зарегистрированы? <NavLink to="/sign-up" className="auth__link">Регистрация</NavLink></p>
+            <p className='auth__disclaimer'>Ещё не зарегистрированы? <NavLink to="/signup" className="auth__link">Регистрация</NavLink></p>
         </main>
     );
 }

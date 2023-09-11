@@ -16,9 +16,9 @@ function Register(props) {
                 <label for="password" className='form__label'>Пароль</label>
                 <input type="password" className='form__input' id='password' name='password' placeholder='Придумайте пароль' required></input>
                 <span className='form__error-field' id='error-password'>Что-то пошло не так...</span>
-                <button type="submit" className='form__submit'>Зарегистрироваться</button>
+                <button type="submit" className='form__submit register-button'>Зарегистрироваться</button>
             </form>
-            <p className='auth__disclaimer'>Уже зарегистрированы? <NavLink to="/sign-in" className="auth__link">Войти</NavLink></p>
+            <p className='auth__disclaimer'>Уже зарегистрированы? <NavLink to="/signin" className="auth__link">Войти</NavLink></p>
         </main>
     );
 }

@@ -59,7 +59,7 @@
     line-height: 1.21;
 }
 
-@media screen and (max-width: 968px) {
+@media screen and (max-width: 768px) {
     .about-project__info {
         gap: 30px;
         margin: 70px 0 93px;

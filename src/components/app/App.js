@@ -9,6 +9,9 @@ import NotFound from '../notFound/NotFound';
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 function App() {
+    useEffect(() => {
+        document.documentElement.setAttribute('lang', 'ru');
+    }, [])
     const [loggedIn, setLoggedIn] = useState(true);
     function logIn() {
         setLoggedIn(true);
@@ -47,8 +50,8 @@ function App() {
                     handleToggleMenu={toggleMenu}
                     logIn={logIn}
                     logOut={logOut} />} />
-                <Route path='/sign-up' element={<Register />} />
-                <Route path='/sign-in' element={<Login />} />
+                <Route path='/signup' element={<Register />} />
+                <Route path='/signin' element={<Login />} />
                 <Route path='*' element={<NotFound />} />
             </Routes>
         </BrowserRouter>

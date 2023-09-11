@@ -18,7 +18,7 @@
     background-position: center center;
 }
 
-@media screen and (max-width: 968px) {
+@media screen and (max-width: 768px) {
     .promo-block {
         padding: 298px 0 240px;
     }

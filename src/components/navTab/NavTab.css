@@ -5,10 +5,16 @@
 
 .navigation__container {
     text-decoration: underline;
+}
+
+.navigation__list {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 40px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
 }
 
 .navigation__link {
@@ -21,7 +27,8 @@
     .navigation__link {
         font-size: 11px;
     }
-    .navigation__container {
+
+    .navigation__list {
         gap: 24px;
     }
 }

@@ -1,4 +1,5 @@
 import Header from '../header/Header';
+import { NavLink } from 'react-router-dom';
 
 function Profile(props) {
     return (
@@ -16,7 +17,7 @@ function Profile(props) {
                         <p className="profile__info-value">pochta@yandex.ru</p>
                     </div>
                     <button type="button" className="edit-profile">Редактировать</button>
-                    <button onClick={props.logOut} type="button" className="logout">Выйти из аккаунта</button>
+                    <NavLink onClick={props.logOut} to="/" className="logout">Выйти из аккаунта</NavLink>
                 </section>
             </main>
         </>
