@@ -1,4 +1,5 @@
 import searchIcon from '../../images/find.svg';
+import FilterCheckbox from '../filterCheckbox/FilterCheckbox';
 
 function SearchForm() {
     return (
@@ -7,6 +8,8 @@ function SearchForm() {
             <button type='submit' className='search-form__submit'>
                 <img src={searchIcon} alt='кнопка поиска фильмов' />
             </button>
+            <FilterCheckbox />
+
         </form>
     );
 }

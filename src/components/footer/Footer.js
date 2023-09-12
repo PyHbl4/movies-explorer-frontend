@@ -5,8 +5,14 @@ function Footer() {
                 <p className="footer__title">Учебный проект Яндекс.Практикум х BeatFilm.</p>
                 <div className="footer__bottom">
                     <p className="footer__copyright">© 2023</p>
-                    <a rel="noreferrer" target="_blank" className="footer__link practicum-link" href="http://practicum.yandex.ru/">Яндекс.Практикум</a>
-                    <a rel="noreferrer" target="_blank" className="footer__link github-link" href="https://github.com/">Github</a>
+                    <ul className="footer__links">
+                        <li className="footer__link">
+                            <a rel="noreferrer" target="_blank" className="footer__link practicum-link" href="http://practicum.yandex.ru/">Яндекс.Практикум</a>
+                        </li>
+                        <li className="footer__link">
+                            <a rel="noreferrer" target="_blank" className="footer__link github-link" href="https://github.com/">Github</a>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </footer>
