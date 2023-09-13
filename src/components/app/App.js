@@ -21,10 +21,13 @@ function App() {
     }
     function toggleMenu() {
         const menuBody = document.getElementById('menu-body');
+        const menuOverlay = document.getElementById('menu-overlay');
         if (menuBody.classList.contains('show')) {
             menuBody.classList.remove('show');
+            menuOverlay.classList.remove('show');
         } else {
             menuBody.classList.add('show');
+            menuOverlay.classList.add('show');
         }
     }
     return (

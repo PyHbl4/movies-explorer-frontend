@@ -6,6 +6,7 @@ import { NavLink } from 'react-router-dom';
 function Header(props) {
     return (
         <header className="header">
+            <div className='menu-overlay' id='menu-overlay' onClick={props.handleToggleMenu}></div>
             <div className="wrapper header__wrapper">
                 <NavLink to="/" className="header__logo"><img src={appLogo} alt="логотип" /></NavLink>
                 {props.loggedIn ?

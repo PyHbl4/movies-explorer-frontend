@@ -49,3 +49,23 @@
     line-height: 1;
     margin: 0;
 }
+
+@media screen and (max-width: 768px) {
+    .filter-block {
+        padding: 0 0 50px;
+    }
+
+    .movie-card__thumbnail {
+        margin: 0 0 9px;
+    }
+
+    .movie-card__duration {
+        margin: 11px 0 12px 14px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .filter-block__description {
+        font-size: 11px;
+    }
+}

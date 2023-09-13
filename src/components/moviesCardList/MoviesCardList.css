@@ -25,3 +25,10 @@
     cursor: pointer;
     margin: 0 0 80px;
 }
+
+@media screen and (max-width: 500px) {
+    .movies-cards {
+        margin: 50px 0 56px;
+        gap: 14px;
+    }
+}

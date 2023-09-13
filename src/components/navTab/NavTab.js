@@ -1,16 +1,16 @@
 function NavTab(props) {
     return (
         <section className="mainpage-navigation">
-            <nav className="wrapper navigation__container">
-                <ul className="navigation__list">
-                    <li className="navigation__item">
-                        <a href="#about-project" className="navigation__link">О проекте</a>
+            <nav className="wrapper mainpage-navigation__container">
+                <ul className="mainpage-navigation__list">
+                    <li className="mainpage-navigation__item">
+                        <a href="#about-project" className="mainpage-navigation__link">О проекте</a>
                     </li>
-                    <li className="navigation__item">
-                        <a href="#techs" className="navigation__link">Технологии</a>
+                    <li className="mainpage-navigation__item">
+                        <a href="#techs" className="mainpage-navigation__link">Технологии</a>
                     </li>
-                    <li className="navigation__item">
-                        <a href="#about-me" className="navigation__link">Студент</a>
+                    <li className="mainpage-navigation__item">
+                        <a href="#about-me" className="mainpage-navigation__link">Студент</a>
                     </li>
                 </ul>
             </nav>

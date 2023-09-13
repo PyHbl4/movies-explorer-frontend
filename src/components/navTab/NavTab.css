@@ -3,11 +3,11 @@
     padding: 24px 0;
 }
 
-.navigation__container {
+.mainpage-navigation__container {
     text-decoration: underline;
 }
 
-.navigation__list {
+.mainpage-navigation__list {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -17,18 +17,18 @@
     list-style: none;
 }
 
-.navigation__link {
+.mainpage-navigation__link {
     color: #FFF;
     line-height: 1.23;
     font-weight: 500;
 }
 
 @media screen and (max-width: 500px) {
-    .navigation__link {
+    .mainpage-navigation__link {
         font-size: 11px;
     }
 
-    .navigation__list {
+    .mainpage-navigation__list {
         gap: 24px;
     }
 }

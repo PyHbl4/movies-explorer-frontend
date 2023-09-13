@@ -9,6 +9,10 @@
     margin: 0 auto;
 }
 
+.sign-up {
+    width: 100%;
+}
+
 .auth__homelink {
     align-self: flex-start;
 }

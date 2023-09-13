@@ -57,6 +57,15 @@ html {
     }
 
     .info-section {
-        padding: 70px 0;
+        padding: 75px 0;
+    }
+
+    .section-title {
+        font-size: 18px;
+        padding: 0 0 30px;
+        letter-spacing: -0.72px;
+    }
+    .timeline-description {
+        font-size: 11px;
     }
 }

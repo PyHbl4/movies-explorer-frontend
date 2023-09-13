@@ -17,7 +17,7 @@ function Portfolio() {
                         </a>
                     </li>
                     <li className="portfolio__item">
-                        <a href="https://github.com/PyHbl4/react-mesto-auth" className="portfolio__link" target="_blank" rel="noreferrer">
+                        <a href="https://eco-stim.ru/" className="portfolio__link" target="_blank" rel="noreferrer">
                             <span className="portfolio-project-name">Одностраничное приложение</span>
                             <span className='portfolio-arrow'>↗</span>
                         </a>

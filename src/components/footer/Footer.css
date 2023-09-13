@@ -50,6 +50,7 @@
 @media screen and (max-width: 500px) {
     .footer__title {
         font-size: 12px;
+        padding: 58px 0 22px;
     }
 
     .footer__bottom {
@@ -57,19 +58,20 @@
         align-items: center;
         grid-template-areas: "links"
             "copyright";
-        padding: 30px 0 20px;
+        padding: 32px 0 20px;
     }
 
     .footer__copyright {
         grid-area: copyright;
         text-align: center;
         justify-self: center;
+        font-size: 12px;
     }
 
     .practicum-link {
         display: block;
         text-align: center;
-        margin: 0 0 12px;
+        margin: 0 0 15px;
     }
 
     .footer__links {
@@ -82,5 +84,9 @@
         display: block;
         text-align: center;
         margin: 0 0 30px;
+    }
+
+    .footer__link {
+        font-size: 12px;
     }
 }

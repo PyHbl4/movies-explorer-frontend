@@ -6,10 +6,10 @@ function Footer() {
                 <div className="footer__bottom">
                     <p className="footer__copyright">© 2023</p>
                     <ul className="footer__links">
-                        <li className="footer__link">
+                        <li className="footer__link-item">
                             <a rel="noreferrer" target="_blank" className="footer__link practicum-link" href="http://practicum.yandex.ru/">Яндекс.Практикум</a>
                         </li>
-                        <li className="footer__link">
+                        <li className="footer__link-item">
                             <a rel="noreferrer" target="_blank" className="footer__link github-link" href="https://github.com/">Github</a>
                         </li>
                     </ul>

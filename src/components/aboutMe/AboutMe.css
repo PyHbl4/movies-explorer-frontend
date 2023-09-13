@@ -97,6 +97,7 @@
         justify-self: center;
         margin: 0 0 40px;
     }
+
     .student__about {
         margin: 0 0 40px;
     }
@@ -104,8 +105,9 @@
 
 @media screen and (max-width: 500px) {
     .student__name {
-        font-size: 40px;
-        margin: 0 0 20px;
+        font-size: 30px;
+        letter-spacing: -1.2px;
+        margin: 0 0 23px;
     }
 
     .student__description {
@@ -114,6 +116,10 @@
 
     .student__about {
         font-size: 11px;
+    }
+
+    .about-me {
+        padding: 86px 0 70px;
     }
 }
 
