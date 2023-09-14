@@ -4,7 +4,7 @@
     font-size: 24px;
     font-weight: 500;
     line-height: 1;
-    margin: 148px auto 0;
+    margin: 74px auto 0;
 }
 
 .profile__info {
@@ -64,7 +64,7 @@
 
 @media screen and (max-width: 768px) {
     .profile__title {
-        margin: 312px auto 0;
+        margin: 236px auto 0;
     }
 
     .profile__info {
@@ -82,7 +82,7 @@
 
 @media screen and (max-width: 500px) {
     .profile__title {
-        margin: 144px auto 0;
+        margin: 70px auto 0;
     }
 
     .profile__info {

@@ -1,6 +1,6 @@
 .promo-block {
     background-color: #073042;
-    padding: 156px 0 122px;
+    padding: 82px 0 122px;
 }
 
 .main-title {
@@ -20,7 +20,7 @@
 
 @media screen and (max-width: 768px) {
     .promo-block {
-        padding: 298px 0 240px;
+        padding: 224px 0 240px;
     }
 }
 @media screen and (max-width: 500px) {
@@ -29,6 +29,6 @@
         font-size: 31px;
     }
     .promo-block {
-        padding: 216px 0 180px;
+        padding: 142px 0 180px;
     }
 }

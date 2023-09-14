@@ -2,6 +2,10 @@
     background-color: #272727;
 }
 
+.tech-title {
+    padding: 20px 0;
+}
+
 .techs__subtitle {
     max-width: 600px;
     margin: 90px auto 0;

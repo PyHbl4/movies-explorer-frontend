@@ -1,5 +1,6 @@
 .about-me {
     background-color: #202020;
+    padding-top: 116px;
 }
 
 .student {
@@ -49,6 +50,11 @@
     font-size: 14px;
     font-weight: 500;
     text-decoration: none;
+    transition: all .3s;
+}
+
+.student__link:hover {
+    opacity: 0.7;
 }
 
 .student__photo {
@@ -56,6 +62,9 @@
 }
 
 @media screen and (max-width: 768px) {
+    .about-me {
+        padding-top: 93px;
+    }
     .student__name {
         font-size: 40px;
         line-height: 1;

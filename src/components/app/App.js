@@ -37,6 +37,7 @@ function App() {
                     loggedIn={loggedIn}
                     handleToggleMenu={toggleMenu}
                     logIn={logIn}
+                    isFrontPage={true}
                 />} />
                 <Route path='/movies' element={<Movies
                     loggedIn={loggedIn}

@@ -5,7 +5,7 @@ import menuCloseIcon from '../../images/menu_close_btn.svg';
 import { NavLink } from 'react-router-dom';
 function Header(props) {
     return (
-        <header className="header">
+        <header className={`header${props.isFrontPage?' main-header':''}`}>
             <div className='menu-overlay' id='menu-overlay' onClick={props.handleToggleMenu}></div>
             <div className="wrapper header__wrapper">
                 <NavLink to="/" className="header__logo"><img src={appLogo} alt="логотип" /></NavLink>
