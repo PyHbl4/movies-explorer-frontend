@@ -1,7 +1,10 @@
-function toggleButton(evt) {
-    evt.target.classList.toggle('active');
-}
-function FilterCheckbox() {
+
+function FilterCheckbox(props) {
+    function toggleButton(evt) {
+        props.toggleCheckbox();
+        evt.target.classList.toggle('active');
+    }
+    
     return (
         <div className="filter-block">
             <button onClick={toggleButton} type="button" className="filter-button">

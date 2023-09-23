@@ -11,7 +11,7 @@ import Portfolio from '../portfolio/Portfolio';
 function Main(props) {
     return (
         <>
-            <Header loggedIn={props.loggedIn} handleToggleMenu={props.handleToggleMenu} logIn={props.logIn} isFrontPage={props.isFrontPage} />
+            <Header loggedIn={props.loggedIn} handleToggleMenu={props.handleToggleMenu} isFrontPage={props.isFrontPage} />
             <main className='main front-page'>
                 <Promo />
                 <NavTab />
