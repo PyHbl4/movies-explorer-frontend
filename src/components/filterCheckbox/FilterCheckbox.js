@@ -1,13 +1,14 @@
 
 function FilterCheckbox(props) {
-    function toggleButton(evt) {
+    function toggleButton() {
         props.toggleCheckbox();
-        evt.target.classList.toggle('active');
     }
     
     return (
         <div className="filter-block">
-            <button onClick={toggleButton} type="button" className="filter-button">
+            <button onClick={toggleButton}
+                    type="button"
+                    className={`filter-button${props.shortsOnly?' active':''}`}>
                 <span className="filter-button__toggler"></span>
             </button>
             <p className="filter-block__description">Короткометражки</p>

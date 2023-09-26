@@ -36,6 +36,11 @@
 .profile__info-value {
     margin: 0;
     justify-self: end;
+    background-color: transparent;
+    color: #FFF;
+    border: none;
+    outline: none;
+    text-align: right;
 }
 
 .edit-profile {
@@ -47,6 +52,28 @@
     outline: none;
     cursor: pointer;
     font-size: 13px;
+}
+
+.edit-profile-button {
+    height: 45px;
+    display: flex;
+    line-height: 1;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-size: 13px;
+    color: #FFF;
+    background-color: #3456F3;
+    border-radius: 3px;
+    transition: all .3s;
+    margin: 200px 0 70px;
+}
+
+.edit-profile-button:hover {
+    opacity: .7;
 }
 
 .logout {

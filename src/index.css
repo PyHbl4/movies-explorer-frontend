@@ -18,6 +18,9 @@
 @import url('../src/components/register/Register.css');
 @import url('../src/components/login/Login.css');
 @import url('../src/components/notFound/NotFound.css');
+@import url('../src/components/noResults/NoResults.css');
+@import url('../src/components/informationPopup/InformationPopup.css');
+@import url('../src/components/preloader/Preloader.css');
 
 
 

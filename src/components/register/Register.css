@@ -1,3 +1,13 @@
+@keyframes showError {
+    from {
+        max-height: 0;
+        opacity: 0;
+    }
+    to {
+        max-height: 20px;
+        opacity: 1;
+    }
+}
 .auth {
     display: flex;
     flex-direction: column;
@@ -64,10 +74,9 @@
     line-height: 1;
     margin: 0;
     padding: 0;
-    max-height: 0;
-    opacity: 0;
-    visibility: hidden;
     transition: all .4s;
+    margin: 5px 0 0;
+    animation: showError .5s linear;
 }
 
 .form__error-field.show {
@@ -94,6 +103,12 @@
     cursor: pointer;
     margin: 182px 0 0;
     transition: all .4s;
+}
+
+.form__submit:disabled {
+    background-color: #F8F8F8;
+    color: #C2C2C2;
+    cursor: not-allowed;
 }
 
 .form__submit:hover {

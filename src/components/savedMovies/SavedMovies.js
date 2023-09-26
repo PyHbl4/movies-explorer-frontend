@@ -2,20 +2,32 @@ import SearchForm from '../searchForm/SearchForm';
 import Header from '../header/Header';
 import Footer from '../footer/Footer';
 import MoviesCardList from '../moviesCardList/MoviesCardList';
-import cards from '../../utils/constants/savedCards';
+import NoResults from '../noResults/NoResults';
 
-function Movies(props) {
+function SavedMovies(props) {
     return (
         <>
-            <Header loggedIn={props.loggedIn} handleToggleMenu={props.handleToggleMenu} logIn={props.logIn} />
+            <Header
+                loggedIn={props.loggedIn}
+                handleToggleMenu={props.handleToggleMenu}
+                logIn={props.logIn} />
             <main className="main movies-page">
                 <section className='app-section search-section'>
-                    <SearchForm />
+                    <SearchForm
+                        cards={props.savedMovies}
+                        getCards={props.getMovies}
+                        handleCheckbox={props.shortsToggler}
+                        shortsOnly={props.shortsOnly} />
                 </section>
-                <MoviesCardList cards={cards} />
+                {props.savedMovies.length > 0 ? <MoviesCardList
+                    isSavedPage={true}
+                    cards={props.savedMovies}
+                    handleDeleteMovie={props.handleDeleteMovie} />
+                    :
+                    <NoResults text={'Сохранённых фильмов нет'} />}
             </main>
             <Footer />
         </>
     );
 }
-export default Movies;
+export default SavedMovies;
