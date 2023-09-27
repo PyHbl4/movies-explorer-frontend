@@ -5,4 +5,5 @@
 Тема: dark-3
 
 Ссылка на пул-реквест: https://github.com/PyHbl4/movies-explorer-frontend/pull/2
+
 Ссылка на развернутый фронтенд на сервере: https://frontend.runkov-diplom.nomoredomainsicu.ru/
