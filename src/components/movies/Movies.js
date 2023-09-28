@@ -14,19 +14,22 @@ function Movies(props) {
                         cards={props.movies}
                         getCards={props.getMovies}
                         handleCheckbox={props.shortsToggler}
-                        shortsOnly={props.shortsOnly} />
+                        moviesSetter={props.moviesSetter}
+                        searchQuery={props.searchQuery}
+                        filteredMovies={props.filteredMovies}
+                        setSearchQuery={props.setSearchQuery}
+                        shortsOnly={props.shortsOnly}
+                        shortsSetter={props.shortsSetter} />
                 </section>
-                {props.movies.length > 0
-                    ?
-                    <MoviesCardList
-                        cards={props.movies}
-                        savedMovies={props.savedMovies}
-                        isSavedPage={false}
-                        handleSaveMovie={props.handleSaveMovie}
-                        handleDeleteMovie={props.handleDeleteMovie} />
-                    :
-                    <NoResults
-                        text={'Ничего не найдено'} />}
+                <MoviesCardList
+                    cards={props.filteredMovies}
+                    savedMovies={props.savedMovies}
+                    isSavedPage={false}
+                    handleSaveMovie={props.handleSaveMovie}
+                    displayedCards={props.displayedCards}
+                    handleLoadMore={props.handleLoadMore}
+                    handleDeleteMovie={props.handleDeleteMovie} />
+                {props.isNotFound && <NoResults text={'Ничего не найдено'} />}
             </main>
             <Footer />
         </>
