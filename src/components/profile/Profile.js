@@ -12,8 +12,6 @@ function Profile(props) {
     const [userEmail, setUserEmail] = useState(currentUser.email || '');
 
     function handleFormInput(inputValue, userInfo) {
-        console.log(inputValue);
-        console.log(userInfo);
         if (inputValue === userInfo) {
             setIsFormChanged(false);
         } else {

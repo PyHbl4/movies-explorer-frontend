@@ -13,23 +13,20 @@ import ProtectedRouteElement from "../protectedRoute/ProtectedRoute";
 import { moviesApiClass } from '../../utils/api/MoviesApi';
 import { mainApiClass } from "../../utils/api/MainApi";
 import Preloader from '../preloader/Preloader';
-import { itemCounts } from "../../utils/constants/itemCounts";
+import { itemCounts, shortsDuration } from "../../utils/constants/constants";
 
 function App() {
     const [currentUser, setCurrentUser] = useState(null);
-    const [loggedIn, setLoggedIn] = useState(false);
-    const [movies, setMovies] = useState([]);
+    const [loggedIn, setLoggedIn] = useState(localStorage.loggedIn);
+    const [movies, setMovies] = useState(() => localStorage.movies ? JSON.parse(localStorage.movies) : []);
     const [savedMovies, setSavedMovies] = useState([]);
-    const [filteredMovies, setFilteredMovies] = useState([]);
+    const [filteredMovies, setFilteredMovies] = useState(localStorage.filteredMovies ? JSON.parse(localStorage.filteredMovies) : []);
     const [filteredSavedMovies, setFilteredSavedMovies] = useState([]);
-    const [shortsOnly, setShortsOnly] = useState(false);
-    const [savedShortsOnly, setSavedShortsOnly] = useState(false);
     const [isInfoPopupOpened, setIsInfoPopupOpened] = useState(false);
     const [infoPopupTitle, setInfoPopupTitle] = useState('');
     const [infoPopupMessage, setInfoPopupMessage] = useState('');
     const [isLoaderActive, setIsLoaderActive] = useState(false);
-    const [mainSearchQuery, setMainSearchQuery] = useState(localStorage.mainSearchQuery || '');
-    const [savedSearchQuery, setSavedSearchQuery] = useState(localStorage.savedSearchQuery || '');
+    const [mainSearchQuery, setMainSearchQuery] = useState(localStorage.searchQuery || '');
     const [displayedCards, setDisplayedCards] = useState(getDisplayedCards());
     const [loadMoreCards, setLoadMoreCards] = useState(getLoadMoreCards());
     const [isNotFound, setIsNotFound] = useState(false);
@@ -40,11 +37,25 @@ function App() {
             setLoadMoreCards(getLoadMoreCards());
         }
         window.addEventListener('resize', handleResize);
-
         return () => {
             window.removeEventListener('resize', handleResize);
         };
     }, []);
+
+    useEffect(() => {
+        localStorage.setItem('filteredMovies', JSON.stringify(filteredMovies));
+    }, [filteredMovies]);
+
+    useEffect(() => {
+        document.documentElement.setAttribute('lang', 'ru');
+        checkToken();
+    }, []);
+
+    useEffect(() => {
+        if (loggedIn) {
+            getSavedMovies();
+        }
+    }, [loggedIn]);
 
     function getDisplayedCards() {
         const screenWidth = window.innerWidth;
@@ -72,18 +83,11 @@ function App() {
         setDisplayedCards(displayedCards + loadMoreCards);
     };
 
-    useEffect(() => {
-        document.documentElement.setAttribute('lang', 'ru');
-        checkToken();
-    }, []);
-    useEffect(() => {
-        if (loggedIn) {
-            getMovies();
-            getSavedMovies();
-        }
-    }, [loggedIn]);
     function logOut() {
         localStorage.clear();
+        setMovies([]);
+        setFilteredMovies([]);
+        setMainSearchQuery('');
         checkToken();
     };
     function toggleMenu() {
@@ -104,11 +108,13 @@ function App() {
                 .then((result) => {
                     setCurrentUser(result.data);
                     setLoggedIn(true);
+                    localStorage.setItem('loggedIn', true);
                 })
                 .catch((err) => {
                     console.log(err);
                     setCurrentUser(null);
                     setLoggedIn(false);
+                    localStorage.removeItem('loggedIn');
                 })
         } else {
             setCurrentUser(null);
@@ -145,17 +151,43 @@ function App() {
                 setIsInfoPopupOpened(true);
             })
     };
-    function getMovies() {
-        moviesApiClass.getMovies()
-            .then((data) => {
-                setMovies(data);
-            })
-            .catch((err) => {
-                setInfoPopupTitle('Ошибка при получении списка фильмов');
-                setInfoPopupMessage(err);
-                setIsInfoPopupOpened(true);
-            });
+    function getMovies(searchQuery, shortsOnly) {
+        if (searchQuery.length < 1) {
+            setInfoPopupTitle('Ошибка');
+            setInfoPopupMessage('Нужно ввести ключевое слово');
+            setIsInfoPopupOpened(true);
+        } else {
+            setIsLoaderActive(true);
+            setDisplayedCards(getDisplayedCards());
+            if (movies.length > 0) {
+                filterMovies(searchQuery, movies, shortsOnly, setFilteredMovies);
+            } else {
+                moviesApiClass.getMovies()
+                    .then((data) => {
+                        setMovies(() => data);
+                        filterMovies(searchQuery, data, shortsOnly, setFilteredMovies);
+                        localStorage.setItem('movies', JSON.stringify(data));
+                    })
+                    .catch((err) => {
+                        setInfoPopupTitle('Ошибка при получении списка фильмов');
+                        setInfoPopupMessage(err);
+                        setIsInfoPopupOpened(true);
+                    });
+            }
+        }
     }
+
+    function filterSavedMovies(searchQuery, shortsOnly) {
+        if (searchQuery.length < 1) {
+            setInfoPopupTitle('Ошибка');
+            setInfoPopupMessage('Нужно ввести ключевое слово');
+            setIsInfoPopupOpened(true);
+        } else {
+            setIsLoaderActive(true);
+            filterMovies(searchQuery, savedMovies, shortsOnly, setFilteredSavedMovies);
+        }
+    }
+
     function getSavedMovies() {
         mainApiClass.getMovies(localStorage.jwt)
             .then((data) => {
@@ -169,13 +201,11 @@ function App() {
             })
     }
     function filterMovies(searchQuery, moviesArray, shortsOnly, moviesSetter) {
-        setIsLoaderActive(true);
-        setDisplayedCards(getDisplayedCards());
         const filteredMovies = moviesArray.filter(movie => {
             const { nameRU, nameEN, duration } = movie;
             const searchText = searchQuery.toLowerCase().trim();
             return (
-                (shortsOnly ? Number(duration) <= 40 : true) &&
+                (shortsOnly ? Number(duration) <= shortsDuration : true) &&
                 (nameRU.toLowerCase().includes(searchText) ||
                     nameEN.toLowerCase().includes(searchText))
             );
@@ -189,8 +219,8 @@ function App() {
         moviesSetter(filteredMovies);
     }
 
-    function shortsToggler(searchQuery, moviesArray, filteredArray, moviesSetter, shortsOnly, shortsSetter) {
-        if (filteredArray.length > 0) {
+    function shortsToggler(searchQuery, moviesArray, moviesSetter, shortsOnly, shortsSetter) {
+        if (moviesArray.length > 0) {
             filterMovies(searchQuery, moviesArray, !shortsOnly, moviesSetter)
         }
         shortsSetter(!shortsOnly);
@@ -199,8 +229,8 @@ function App() {
     function handleSaveMovie(options, savedSetter, isSaved, buttonsDisabler) {
         buttonsDisabler(true);
         mainApiClass.saveMovie(localStorage.jwt, options)
-            .then(() => {
-                getSavedMovies();
+            .then((data) => {
+                setSavedMovies(savedMovies => [...savedMovies, data.data])
                 savedSetter(!isSaved);
             })
             .catch((err) => {
@@ -216,8 +246,11 @@ function App() {
     function handleDeleteMovie(cardId, savedSetter, isSaved, buttonsDisabler) {
         buttonsDisabler(true);
         mainApiClass.deleteMovie(localStorage.jwt, cardId)
-            .then(() => {
-                getSavedMovies();
+            .then((data) => {
+                const newSavedMovies = savedMovies.filter((movie) => {
+                    return movie._id !== data.data._id;
+                })
+                setSavedMovies(newSavedMovies)
                 savedSetter(!isSaved);
             })
             .catch((err) => {
@@ -264,18 +297,16 @@ function App() {
                         element={Movies}
                         loggedIn={loggedIn}
                         handleToggleMenu={toggleMenu}
-                        getMovies={filterMovies}
+                        getMovies={getMovies}
                         handleSaveMovie={handleSaveMovie}
                         handleDeleteMovie={handleDeleteMovie}
                         movies={movies}
                         filteredMovies={filteredMovies}
                         savedMovies={savedMovies}
-                        shortsOnly={shortsOnly}
                         shortsToggler={shortsToggler}
                         moviesSetter={setFilteredMovies}
                         searchQuery={mainSearchQuery}
                         setSearchQuery={setMainSearchQuery}
-                        shortsSetter={setShortsOnly}
                         displayedCards={displayedCards}
                         handleLoadMore={handleLoadMore}
                         isNotFound={isNotFound}
@@ -284,18 +315,15 @@ function App() {
                         element={SavedMovies}
                         loggedIn={loggedIn}
                         handleToggleMenu={toggleMenu}
-                        getMovies={filterMovies}
+                        getMovies={filterSavedMovies}
                         movies={movies}
                         filteredMovies={filteredSavedMovies}
                         savedMovies={savedMovies}
-                        shortsOnly={savedShortsOnly}
                         shortsToggler={shortsToggler}
                         handleDeleteMovie={handleDeleteMovie}
                         moviesSetter={setFilteredSavedMovies}
-                        searchQuery={savedSearchQuery}
                         isNotFound={isNotFound}
-                        setSearchQuery={setSavedSearchQuery}
-                        shortsSetter={setSavedShortsOnly}
+                        setFilteredMovies={setFilteredSavedMovies}
                     />} />
                     <Route path='/profile' element={<ProtectedRouteElement
                         element={Profile}

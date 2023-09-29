@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import SearchForm from '../searchForm/SearchForm';
 import Header from '../header/Header';
 import MoviesCardList from '../moviesCardList/MoviesCardList';
@@ -5,6 +6,10 @@ import NoResults from '../noResults/NoResults';
 import Footer from '../footer/Footer';
 
 function Movies(props) {
+    const [shortsOnly, setShortsOnly] = useState(() => localStorage.shortsOnly === 'true' ? true : false);
+    useEffect(() => {
+        setShortsOnly(() => localStorage.shortsOnly === 'true' ? true : false);
+    }, [])
     return (
         <>
             <Header loggedIn={props.loggedIn} handleToggleMenu={props.handleToggleMenu} logIn={props.logIn} />
@@ -18,8 +23,8 @@ function Movies(props) {
                         searchQuery={props.searchQuery}
                         filteredMovies={props.filteredMovies}
                         setSearchQuery={props.setSearchQuery}
-                        shortsOnly={props.shortsOnly}
-                        shortsSetter={props.shortsSetter} />
+                        shortsOnly={shortsOnly}
+                        shortsSetter={setShortsOnly} />
                 </section>
                 <MoviesCardList
                     cards={props.filteredMovies}

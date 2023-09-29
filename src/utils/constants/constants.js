@@ -10,3 +10,5 @@ export const itemCounts = {
         mobile: 2
     }
 }
+
+export const shortsDuration = 40;
