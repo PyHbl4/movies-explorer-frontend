@@ -1,0 +1,13 @@
+.no-results {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding-top: 40px;
+}
+
+.no-results__title {
+    color: white;
+    font-size: 28px;
+    text-align: center;
+}

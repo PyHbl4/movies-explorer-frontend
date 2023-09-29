@@ -29,8 +29,14 @@
     font-weight: 400;
     line-height: 1;
     text-decoration: none;
-    margin-bottom: 60px;
     align-self: end;
+    width: fit-content;
+    display: flex;
+    margin: 0 auto 60px;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
 }
 
 @media screen and (max-width: 768px) {
@@ -47,6 +53,7 @@
     .not-found__link {
         margin-bottom: 30px;
     }
+
     .not-found__title {
         font-size: 80px;
     }

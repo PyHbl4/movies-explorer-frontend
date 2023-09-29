@@ -1,32 +1,31 @@
-import { useState, useEffect } from "react";
 import searchIcon from '../../images/find.svg';
 import FilterCheckbox from '../filterCheckbox/FilterCheckbox';
 
 function SearchForm(props) {
-    const [searchQuery, setSearchQuery] = useState('');
-    useEffect(() => {
-        localStorage.searchQuery ? setSearchQuery(localStorage.searchQuery) : setSearchQuery('');
-    }, []);
     function handleSearchInput(e) {
-        localStorage.setItem('searchQuery', e.target.value);
-        setSearchQuery(e.target.value);
+        if (!props.isSavedPage) {
+            localStorage.setItem('searchQuery', e.target.value);
+        }
+        props.setSearchQuery(e.target.value);
     }
     function handleSubmitSearch(e) {
         e.preventDefault();
-        props.getCards(searchQuery);
-    } 
+        props.getCards(props.searchQuery, props.shortsOnly);
+    }
 
-    function toggleShortsOnly() {
-        props.handleCheckbox(searchQuery);
+    async function toggleShortsOnly() {
+        await props.handleCheckbox(props.searchQuery, props.cards, props.moviesSetter, props.shortsOnly, props.shortsSetter);
+        if (!props.isSavedPage) {
+            localStorage.setItem('shortsOnly', !props.shortsOnly);
+        }
     }
     return (
         <form className="search-form" name="search-form" onSubmit={handleSubmitSearch}>
             <input type='search'
-                value={searchQuery}
+                value={props.searchQuery}
                 onChange={handleSearchInput}
                 placeholder='Фильм'
-                className='search-form__input'
-                required={true}>
+                className='search-form__input'>
             </input>
             <button type='submit' className='search-form__submit'>
                 <img src={searchIcon} alt='кнопка поиска фильмов' />

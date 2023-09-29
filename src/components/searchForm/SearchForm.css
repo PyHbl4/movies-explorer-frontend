@@ -42,6 +42,11 @@
     transition: all .3s;
 }
 
+.search-form__submit:disabled {
+    filter: grayscale();
+    cursor: not-allowed;
+}
+
 .search-form__submit:hover {
     opacity: 0.8;
 }

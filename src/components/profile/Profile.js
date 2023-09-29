@@ -7,29 +7,41 @@ import { CurrentUserContext } from '../../contexts/CurrentUserContext.js';
 function Profile(props) {
     const currentUser = React.useContext(CurrentUserContext);
     const [isEditMode, setIsEditMode] = useState(false);
+    const [isFormChanded, setIsFormChanged] = useState(false);
     const [userName, setUserName] = useState(currentUser.name || '');
     const [userEmail, setUserEmail] = useState(currentUser.email || '');
+
+    function handleFormInput(inputValue, userInfo) {
+        if (inputValue === userInfo) {
+            setIsFormChanged(false);
+        } else {
+            setIsFormChanged(true);
+        }
+    }
+
     function handleEmailInput(evt) {
         setUserEmail(evt.target.value);
+        handleFormInput(evt.target.value, currentUser.email);
     }
+
     function handleNameInput(evt) {
         setUserName(evt.target.value);
+        handleFormInput(evt.target.value, currentUser.name);
     }
+
     function toggleEditMode() {
         setIsEditMode(prev => !prev);
     }
+
     async function editUser() {
-        if (userName === currentUser.name && userEmail === currentUser.email) {
-            setIsEditMode(prev => !prev);
-        } else {
-            const options = {
-                name: userName,
-                email: userEmail
-            };
-            await props.handleEditUser(localStorage.jwt, options);
-            setIsEditMode(prev => !prev);
-        }
+        const options = {
+            name: userName,
+            email: userEmail
+        };
+        await props.handleEditUser(localStorage.jwt, options);
+        setIsEditMode(prev => !prev);
     }
+
     return (
         <>
             <Header loggedIn={props.loggedIn} handleToggleMenu={props.handleToggleMenu} logIn={props.logIn} />
@@ -46,7 +58,7 @@ function Profile(props) {
                     </div>
                     {isEditMode
                         ?
-                        <button type="button" onClick={editUser} className='edit-profile-button'>Сохранить</button>
+                        <button type="button" onClick={editUser} className='edit-profile-button' disabled={!isFormChanded}>Сохранить</button>
                         :
                         <>
                             <button type="button" className="edit-profile" onClick={toggleEditMode}>Редактировать</button>
